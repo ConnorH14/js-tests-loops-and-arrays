@@ -4,6 +4,10 @@
 // output: ['is', 'a', 'split', 'sentence.', 'This']
 
 function rearranger(arr) {
+    let moved = arr[0]
+    arr.push(moved)
+    arr.splice(0,1)
+    return arr
 }
 
 
@@ -15,7 +19,23 @@ function rearranger(arr) {
 // input: [6, 4, 8, 33, 42, 10]
 // output: 42
 
+
 function largestNum(arr) {
+    let largest = 0
+    let dupe = 1
+    for(i = 0; i < arr.length; i++){
+        if(arr[i] > largest){
+            largest = arr[i]
+        }else if(arr[i] == largest){
+            dupe++
+        }
+    }
+    if(dupe > 1){
+        largest = {
+            [largest]: dupe
+        }
+    }
+    return largest
 }
 
 
@@ -28,6 +48,13 @@ function largestNum(arr) {
 // output: [16, 8, 4, 28]
 
 function elemsTimesLength(arr) {
+    let mulNum
+    let numList =[]
+    for(i = 0; i < arr.length; i++){
+        mulNum = arr[i] * arr.length
+        numList.push(mulNum)
+    }
+    return numList
 }
 
 
@@ -63,6 +90,15 @@ let flights = [{
 
 function flightCost(destination, firstClass) {
     //***hint: use the find method***
+    destination = destination.toUpperCase()
+    switch(destination) {
+        case 'LAX': 
+        return (firstClass ? flights[0].prices.firstClass : flights[0].prices.standard);
+        case 'SEA': 
+        return (firstClass ? flights[1].prices.firstClass : flights[1].prices.standard);
+        case 'CAN': 
+        return (firstClass ? flights[2].prices.firstClass : flights[2].prices.standard);
+    }
 
 }
 
@@ -84,8 +120,20 @@ let staff = [{ id: 1, name: 'Jon' }, { id: 2, name: 'Yuli' }, { id: 21, name: 'P
 { id: 881, name: 'Paul' }, { id: 0, name: 'Jon' }, { id: 999, name: 'Timma' }]
 
 function findById(id) {
+    let idCheck
 
+    for(let i = 0; i < staff.length; i++){
+        if(id == staff[i].id){
+            return staff[i]
+        }else{
+            idCheck = false
+        }
+    }
+    if(idCheck == false){
+        return {error: "No user with that id."}
+    }
 }
+
 
 
 // ------------------------------------------
@@ -111,4 +159,10 @@ let theBand = {
 }
 
 function bandMemberDetails(name) {
+    for(let i = 0; i < theBand.members.length; i++){
+        if(theBand.members[i].name.indexOf(name) > -1){
+            return `${theBand.members[i].name} is in the band and plays the ${theBand.members[i].instrument}`
+        }
+    }
+    console.log(name)
 }

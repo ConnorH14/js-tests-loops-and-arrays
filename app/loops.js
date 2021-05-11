@@ -41,5 +41,11 @@ function rangeTotal(n1, n2) {
 // output: 2
 
 function rangeDivisor(start, end, divisor) {
-
+  let nums = []
+  for(i = start; i <= end; i++){
+    if(i % divisor == 0){
+      nums.push(i)
+    }
+  }
+  return nums.length
 }
