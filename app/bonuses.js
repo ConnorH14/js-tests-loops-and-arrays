@@ -10,6 +10,43 @@
 
 function letterChecker(str) {
 
+  let alphabet = "abcdefghijklmnopqrstuvwxyz"
+  let strArrayNum = 0
+  let strArray = []
+  let alphabetArray = []
+  let keyNum
+  let keyLetter
+
+  for(let i = 0; i < alphabet.length; i++){
+    alphabetArray.push(alphabet.charCodeAt(i))
+  }
+  
+  for(let i = 0; i < str.length; i++){
+    strArray.push(str.charCodeAt(i))
+  }
+
+  for(let i = 0; i < 26; i++){
+    
+    if(alphabetArray[i] == strArray[strArrayNum]){
+      console.log(alphabetArray[i] + " " + strArray[strArrayNum])
+      strArrayNum++
+    }else if(alphabetArray[i - 1] == strArray[strArrayNum - 1] && alphabetArray[i + 1] == strArray[strArrayNum]){
+      console.log(alphabetArray[i])
+      keyNum = alphabetArray[i]
+    }else{
+      console.log(alphabetArray[i])
+    }
+  }
+
+  if(keyNum == undefined){
+    return "no missing letters"
+  }else{
+    console.log(keyNum)
+    keyLetter = String.fromCharCode(keyNum);
+    console.log(keyLetter)
+    return keyLetter
+  }
+
 }
 
 
