@@ -6,7 +6,13 @@
 // 1*2*3*4 = 24
 
 function factorials(num) {
-
+  let i
+  let calc = []
+  for(i = 1; i <= num; i++){
+    calc.push(i)
+  }
+  mult = calc.reduce((a, b) => a * b )
+  return mult
 }
 
 // ------------------------------------------
@@ -17,7 +23,12 @@ function factorials(num) {
 // output: 20
 
 function rangeTotal(n1, n2) {
-
+  let sum = []
+  for(i = n1; i <= n2; i++){
+    sum.push(i)
+  }
+  final = sum.reduce((a, b) => a + b )
+  return final
 }
 
 // ------------------------------------------
